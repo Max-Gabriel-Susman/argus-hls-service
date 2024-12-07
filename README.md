@@ -1,6 +1,6 @@
 # Argus HLS Service 
 
-Argus HLS Service is a web API that exposes the Argus Platform's Stream Engine to Argus Clients
+The Argus HLS Service Streams Content from an Argus RTMP Service to Argus Egress Clients
 
 ## Setup
 
