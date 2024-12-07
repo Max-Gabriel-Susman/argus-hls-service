@@ -1,0 +1,54 @@
+name: Build Go Service
+
+on:
+  push:
+    branches:
+      - main # Trigger the workflow on push to the main branch
+  pull_request:
+    branches:
+      - main # Optionally trigger on pull requests to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Go environment
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21' # Specify your desired Go version
+
+      # Step 3: Cache Go modules
+      - name: Cache Go modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      # Step 4: Install dependencies
+      - name: Install dependencies
+        run: go mod tidy
+
+      # Step 5: Build the application
+      - name: Build the Go service
+        run: go build -o argus-stream-service .
+
+      # Step 6: Test the build
+      - name: Verify the build
+        run: ./argus-stream-service --help # Example command to verify the build
+
+      # Optional Step: Upload build artifact
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: argus-stream-service
+          path: ./argus-stream-service
