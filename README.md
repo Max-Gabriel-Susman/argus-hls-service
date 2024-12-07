@@ -22,4 +22,4 @@ VLC open network for URL: http://localhost:8080/hls/output.m3u8
 kubectl apply -f deployment.yaml
 
 kubectl get pods
-kubectl get service argus-stream-service
+kubectl get service argus-hls-service

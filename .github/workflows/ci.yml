@@ -40,15 +40,15 @@ jobs:
 
       # Step 5: Build the application
       - name: Build the Go service
-        run: go build -o argus-stream-service .
+        run: go build -o argus-hls-service .
 
       # Step 6: Test the build
       - name: Verify the build
-        run: ./argus-stream-service --help # Example command to verify the build
+        run: ./argus-hls-service --help # Example command to verify the build
 
       # Optional Step: Upload build artifact
       - name: Upload build artifact
         uses: actions/upload-artifact@v3
         with:
-          name: argus-stream-service
-          path: ./argus-stream-service
+          name: argus-hls-service
+          path: ./argus-hls-service

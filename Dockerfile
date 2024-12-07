@@ -12,7 +12,7 @@ RUN go mod download
 COPY . .
 
 # Build the Go application
-RUN go build -o argus-stream-service
+RUN go build -o argus-hls-service
 
 # Use a compatible base image for the final container
 FROM ubuntu:22.04
@@ -26,7 +26,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy the compiled binary from the builder stage
-COPY --from=builder /app/argus-stream-service .
+COPY --from=builder /app/argus-hls-service .
 
 # Copy the videos directory to serve HLS files
 COPY ./videos ./videos
@@ -35,4 +35,4 @@ COPY ./videos ./videos
 EXPOSE 8080
 
 # Command to run the service
-CMD ["/app/argus-stream-service"]
+CMD ["/app/argus-hls-service"]

@@ -19,4 +19,4 @@ So now we need to actually create an iOS ingresss, then it's just a matter of pi
 
 not sure what exactly it was but something about including the videos directoires content was causing pushes to break so I git ignored it
 
-also we're changing the name from argus-stream-service to argus-hls-service
+also we're changing the name from argus-hls-service to argus-hls-service
