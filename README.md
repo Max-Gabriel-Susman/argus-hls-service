@@ -1,6 +1,6 @@
 # Argus HLS Service 
 
-The Argus HLS Service Streams Content from an Argus RTMP Service to Argus Egress Clients
+The Argus HLS Service delivers HLS streams to Argus Egress Clients
 
 ## Setup
 
@@ -23,3 +23,11 @@ kubectl apply -f deployment.yaml
 
 kubectl get pods
 kubectl get service argus-hls-service
+
+## TODOs
+
+* we need to push docker images for this and hls service to docker hub 
+
+* linter
+
+* ci
